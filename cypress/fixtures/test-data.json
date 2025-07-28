@@ -1,0 +1,17 @@
+{
+  "itemsInCart": {
+    "testingDrink": "Espresso Macchiato",
+    "before": {
+      "totalPrice": "$12.00",
+      "totalButton": "Total: $12.00",
+      "cartData": "$12.00 x 1",
+      "cartAmount": "cart (1)"
+    },
+    "after": {
+      "totalPrice": "$24.00",
+      "totalButton": "Total: $24.00",
+      "cartData": "$12.00 x 2",
+      "cartAmount": "cart (2)"
+    }
+  }
+}

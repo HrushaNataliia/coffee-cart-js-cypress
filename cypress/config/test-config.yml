@@ -1,0 +1,28 @@
+viewport:
+  width: 1280
+  height: 720
+
+timeouts:
+  default: 10000
+  request: 5000
+  response: 10000
+
+visual:
+  matchLevel: "Strict"
+  ignoreCaret: true
+  ignoreDisplacements: false
+
+test_data:
+  default_user:
+    name: "Test User"
+    email: "test@example.com"
+
+  drinks:
+    espresso: "Espresso"
+    macchiato: "Espresso Macchiato"
+    americano: "Americano"
+
+  prices:
+    espresso: "$10.00"
+    macchiato: "$12.00"
+    americano: "$7.00"
