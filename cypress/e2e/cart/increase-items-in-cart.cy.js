@@ -14,27 +14,33 @@ describe('Increase Items in Cart', () => {
 
     beforeEach(() => {
         menuPage.visit()
-        cy.eyesSetup()
+
+        cy.safeEyesOpen({
+            appName: 'Coffee Cart Application',
+            testName: Cypress.currentTest.title,
+            browser: { width: 1200, height: 800, name: 'chrome' }
+        })
     })
 
     afterEach(() => {
-        cy.eyesTeardown()
+        // Безпечне закриття Eyes
+        cy.safeEyesClose()
     })
 
     it('Should increase the number of items in the cart', () => {
-        cy.visualCheck('Menu Page Initial State')
+        cy.safeEyesCheckWindow('Menu Page - Initial State')
 
         cy.addDrinkToCart(testData.testingDrink)
 
         menuPage.goToCartPage()
 
-        cy.visualCheck('Cart Page - One Item')
+        cy.safeEyesCheckWindow('Cart Page - One Item')
 
         cy.verifyCartState(testData.before)
 
         cartPage.clickPlusButton()
 
-        cy.visualCheck('Cart Page - Two Items')
+        cy.safeEyesCheckWindow('Cart Page - Two Items')
 
         cy.verifyCartState(testData.after)
     })

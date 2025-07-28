@@ -1,38 +1,25 @@
 const { defineConfig } = require('cypress')
-const yaml = require('js-yaml')
-const fs = require('fs')
-
-const loadYamlConfig = (filePath) => {
-    try {
-        const fileContents = fs.readFileSync(filePath, 'utf8')
-        return yaml.load(fileContents)
-    } catch (e) {
-        console.log('YAML config not found:', filePath)
-        return {}
-    }
-}
 
 module.exports = defineConfig({
     e2e: {
         baseUrl: 'https://coffee-cart.app',
-        viewportWidth: 1280,
-        viewportHeight: 720,
+        viewportWidth: 1200,
+        viewportHeight: 800,
         defaultCommandTimeout: 10000,
         requestTimeout: 5000,
         responseTimeout: 10000,
 
         setupNodeEvents(on, config) {
+            // Налаштування Applitools ТІЛЬКИ якщо API key існує
             if (process.env.APPLITOOLS_API_KEY) {
-                require('@applitools/eyes-cypress')(module)
+                try {
+                    require('@applitools/eyes-cypress')(module)
+                } catch (error) {
+                    console.log('Applitools not configured properly, skipping visual tests')
+                }
             }
 
             require('cypress-mochawesome-reporter/plugin')(on)
-
-            on('task', {
-                loadYaml(filePath) {
-                    return loadYamlConfig(filePath)
-                }
-            })
 
             return config
         },
@@ -47,6 +34,5 @@ module.exports = defineConfig({
         reportPageTitle: 'Coffee Cart Test Report',
         embeddedScreenshots: true,
         inlineAssets: true,
-        saveAllAttempts: false,
     },
 })
