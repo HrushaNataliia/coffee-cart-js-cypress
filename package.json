@@ -1,0 +1,32 @@
+{
+  "name": "coffee-cart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "test": "npm run cy:run",
+    "test:headed": "cypress run --headed",
+    "cy:run:firefox": "cypress run --browser firefox",
+    "cy:run:edge": "cypress run --browser edge",
+    "test:visual": "cypress run --env visual=true",
+    "test:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
+    "test:tablet": "cypress run --config viewportWidth=768,viewportHeight=1024",
+    "test:ci": "cypress run --browser chrome --headless",
+    "report:generate": "cypress run --reporter cypress-mochawesome-reporter",
+    "report:open": "open cypress/reports/html/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@applitools/eyes-cypress": "^3.53.2",
+    "cypress": "^14.5.3",
+    "cypress-mochawesome-reporter": "^4.0.0",
+    "cypress-real-events": "^1.14.0",
+    "cypress-xpath": "^2.0.1",
+    "js-yaml": "^4.1.0"
+  }
+}
